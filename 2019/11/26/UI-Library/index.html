@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Hello World · Kate Park Blog</title>
+    <title>UI Library를 만들어보자! · Kate Park Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Kate Park&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">UI Library를 만들어보자!</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            UI Library를 만들어보자!
             <!-- 404 -->
             
         </h1>
@@ -264,14 +264,20 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" target="_blank" rel="noopener" data-tags = "rollup.js">rollup.js</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">73</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">753</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/11/22</span>
+                    <span class="post-intro-time">2019/11/26</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,28 +401,66 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="UI-Library를-만들자-1-rollup-js"><a href="#UI-Library를-만들자-1-rollup-js" class="headerlink" title="UI Library를 만들자 (1) - rollup.js"></a>UI Library를 만들자 (1) - rollup.js</h1><p>회사에서 이번 분기의 큰 프로젝트 일환으로 UI 라이브러리를 만들게 되었다!<br>웹팩을 공부하고, 해당 내용을 적용시킬 수 있는 좋은 계기가 될 것 같다!고 생각했는데<br>이번 프로젝트에서는 <code>rollup.js</code>을 사용하게 되었다.<br>웹팩이랑 비슷한 역할을 하는 모듈번들러인것 같아서 다시 <code>rollup</code>공부를 해야하기에.<br>다시금 공부모드로..+_+</p>
+<h2 id="rollup이란"><a href="#rollup이란" class="headerlink" title="rollup이란?"></a>rollup이란?</h2><p>공식 사이트에 따르면,</p>
+<ul>
+<li>Rollup is a <strong><em>module bundler</em></strong> for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application. It uses the new standardized format for code modules included in the ES6 revision of JavaScript, instead of previous idiosyncratic solutions such as CommonJS and AMD. ES modules let you freely and seamlessly combine the most useful individual functions from your favorite libraries. This will eventually be possible natively everywhere, but Rollup lets you do it today.</li>
+</ul>
+<p>설명만 보자면 웹팩과 거의 역할이 동일해보인다….. 그렇다면 웹팩 대비 장점은?</p>
+<ul>
+<li>Rollup includes the bare minimum, it results in lighter, faster, and less complicated libraries and applications. </li>
+<li>더 가볍고 빠르고 덜 복잡하다 한다. </li>
+</ul>
+<h2 id="rollup-설정하기-rollup-config-js"><a href="#rollup-설정하기-rollup-config-js" class="headerlink" title="rollup 설정하기 - rollup.config.js"></a>rollup 설정하기 - rollup.config.js</h2><p>rollup도 webpack과 마찬가지고 configuration 파일을 만들어줘야 함.<br>input, output의 모양새가 webpack.config와 매우매우매우 비슷하다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//rollup.config.js </span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  input: <span class="string">'src/main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    file: <span class="string">'bundle.js'</span>,</span><br><span class="line">    format: <span class="string">'cjs'</span>,</span><br><span class="line">    name: <span class="string">'bundle'</span>,</span><br><span class="line">    globals: &#123;</span><br><span class="line">      jquery: <span class="string">'$'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">      resolve(),</span><br><span class="line">      commonjs()</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>input</code> - <strong><em>The bundle’s entry point(s)</em></strong> (e.g. your main.js or app.js or index.js). If you provide an array of entry points or an object mapping names to entry points, they will be bundled to separate output chunks. </p>
+</li>
+<li><p><code>output</code> - It’s an object like configuration where we set up the <strong><em>result of our processing</em></strong>. Minimum of the configuration is to include the:</p>
+<p>2.1 <code>file</code> - This is the location where our bundle will be created. It represents the file to write to. Usually under the build or dist folder. The folder and the file will be generated automatically by rollup</p>
+<p>2.2 <code>format</code> - Rollup supports several output formats. </p>
+<ul>
+<li>amd – Asynchronous Module Definition, used with module loaders like RequireJS</li>
+<li>cjs – CommonJS, suitable for Node and other bundlers</li>
+<li>esm – Keep the bundle as an ES module file, suitable for other bundlers and inclusion as a <script type=module> tag in modern browsers</li>
+<li>iife – A self-executing function, suitable for inclusion as a <script> tag. (If you want to create a bundle for your application, you probably want to use this.)</li>
+<li>umd – Universal Module Definition, works as amd, cjs and iife all in one</li>
+<li>system – Native format of the SystemJS loader</li>
+</ul>
+<p>2.3 <code>name</code> - Necessary for iife/umd bundles, Global variable name representing the created bundle</p>
+<p>2.4 <code>globals</code> - Specifies <code>id: variableName</code> pairs necessary for external imports in umd/iife bundles.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import $ from &apos;jquery&apos;</span><br><span class="line"></span><br><span class="line">//rollup.config.js</span><br><span class="line">    globals: &#123;</span><br><span class="line">      jquery: &apos;$&apos;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>plugins</code> - plugins change the behaviour of Rollup at key points in the bundling process. (Plugin list : <a href="https://github.com/rollup/awesome" target="_blank" rel="noopener">https://github.com/rollup/awesome</a>)<br>importing modules installed with NPM, compiling code with Babel, working with JSON files and so on.</p>
+</li>
+</ol>
+<h2 id="rollup-config에-넣을-수-있는-big-list-of-options"><a href="#rollup-config에-넣을-수-있는-big-list-of-options" class="headerlink" title="rollup config에 넣을 수 있는 big list of options!"></a>rollup config에 넣을 수 있는 big list of options!</h2><p>본인들이 <code>BIG LIST</code>라고 언급한것처럼 옵션이 정말 많다.;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rollup.config.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; <span class="comment">// can be an array (for multiple inputs)</span></span><br><span class="line">  <span class="comment">// core input options</span></span><br><span class="line">  external,</span><br><span class="line">  input, <span class="comment">// required</span></span><br><span class="line">  plugins,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// advanced input options</span></span><br><span class="line">  cache,</span><br><span class="line">  inlineDynamicImports,</span><br><span class="line">  manualChunks,</span><br><span class="line">  onwarn,</span><br><span class="line">  preserveModules,</span><br><span class="line">  strictDeprecations,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// danger zone</span></span><br><span class="line">  acorn,</span><br><span class="line">  acornInjectPlugins,</span><br><span class="line">  context,</span><br><span class="line">  moduleContext,</span><br><span class="line">  preserveSymlinks,</span><br><span class="line">  shimMissingExports,</span><br><span class="line">  treeshake,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// experimental</span></span><br><span class="line">  chunkGroupingSize,</span><br><span class="line">  experimentalCacheExpiry,</span><br><span class="line">  experimentalOptimizeChunks,</span><br><span class="line">  experimentalTopLevelAwait,</span><br><span class="line">  perf,</span><br><span class="line"></span><br><span class="line">  output: &#123; <span class="comment">// required (can be an array, for multiple outputs)</span></span><br><span class="line">    <span class="comment">// core output options</span></span><br><span class="line">    dir,</span><br><span class="line">    file,</span><br><span class="line">    format, <span class="comment">// required</span></span><br><span class="line">    globals,</span><br><span class="line">    name,</span><br><span class="line">    plugins,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// advanced output options</span></span><br><span class="line">    assetFileNames,</span><br><span class="line">    banner,</span><br><span class="line">    chunkFileNames,</span><br><span class="line">    compact,</span><br><span class="line">    entryFileNames,</span><br><span class="line">    extend,</span><br><span class="line">    footer,</span><br><span class="line">    interop,</span><br><span class="line">    intro,</span><br><span class="line">    outro,</span><br><span class="line">    paths,</span><br><span class="line">    sourcemap,</span><br><span class="line">    sourcemapExcludeSources,</span><br><span class="line">    sourcemapFile,</span><br><span class="line">    sourcemapPathTransform,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// danger zone</span></span><br><span class="line">    amd,</span><br><span class="line">    dynamicImportFunction,</span><br><span class="line">    esModule,</span><br><span class="line">    exports,</span><br><span class="line">    externalLiveBindings,</span><br><span class="line">    freeze,</span><br><span class="line">    indent,</span><br><span class="line">    namespaceToStringTag,</span><br><span class="line">    noConflict,</span><br><span class="line">    preferConst,</span><br><span class="line">    strict</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  watch: &#123;</span><br><span class="line">    chokidar,</span><br><span class="line">    clearScreen,</span><br><span class="line">    exclude,</span><br><span class="line">    include</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rollup.config.js (building more than one bundle)</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [&#123;</span><br><span class="line">  input: <span class="string">'main-a.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    file: <span class="string">'dist/bundle-a.js'</span>,</span><br><span class="line">    format: <span class="string">'cjs'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  input: <span class="string">'main-b.js'</span>,</span><br><span class="line">  output: [</span><br><span class="line">    &#123;</span><br><span class="line">      file: <span class="string">'dist/bundle-b1.js'</span>,</span><br><span class="line">      format: <span class="string">'cjs'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      file: <span class="string">'dist/bundle-b2.js'</span>,</span><br><span class="line">      format: <span class="string">'esm'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<h2 id="NPM-package-json에서-config사용하기"><a href="#NPM-package-json에서-config사용하기" class="headerlink" title="NPM package.json에서 config사용하기"></a>NPM package.json에서 config사용하기</h2><p>scripts에 rollup 적용하기,</p>
+<ul>
+<li><p>-c : config 파일 경로, 경로 안적는 경우는 defaults to rollup.config.js</p>
+</li>
+<li><p>-o : 번들 후 결과 파일, Single output file (if absent, prints to stdout)</p>
+</li>
+<li><p>--environment : process.ENV를 통해 환경변수 전달</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;build&quot;: &quot;rollup -c -o dist/index.min.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="Plugin-사용하기"><a href="#Plugin-사용하기" class="headerlink" title="Plugin 사용하기"></a>Plugin 사용하기</h2><p>공식 사이트 플러그인 주소: <a href="https://github.com/rollup/awesome" target="_blank" rel="noopener">https://github.com/rollup/awesome</a></p>
+<ul>
+<li>내가 사용중인 플러그인<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  babel(&#123; <span class="attr">exclude</span>: <span class="string">'node_modules/**'</span> &#125;),</span><br><span class="line">  uglify(),</span><br><span class="line">  svg()</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="http://katepark1009.github.io">Kate Park</a>
-            <!-- <p>原文链接：<a href="http://katepark1009.github.io/2019/11/22/hello-world/">http://katepark1009.github.io/2019/11/22/hello-world/</a> -->
-            <p>Publish date：<a href="http://katepark1009.github.io/2019/11/22/hello-world/">November 22nd 2019, 4:51:38 pm</a>
-            <p>Update date：<a href="http://katepark1009.github.io/2019/11/22/hello-world/">November 22nd 2019, 4:51:38 pm</a>
+            <!-- <p>原文链接：<a href="http://katepark1009.github.io/2019/11/26/UI-Library/">http://katepark1009.github.io/2019/11/26/UI-Library/</a> -->
+            <p>Publish date：<a href="http://katepark1009.github.io/2019/11/26/UI-Library/">November 26th 2019, 2:57:55 pm</a>
+            <p>Update date：<a href="http://katepark1009.github.io/2019/11/26/UI-Library/">December 2nd 2019, 11:04:18 am</a>
             <!-- <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p> -->
         </div>
     
@@ -424,13 +468,13 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/11/22/My-first-Post/" title= "첫 포스트! Hexo 블로그 설치">
-                    <div class="nextTitle">첫 포스트! Hexo 블로그 설치</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/11/25/webpack/" title= "Webpack 공부해보자!">
+                    <div class="prevTitle">Webpack 공부해보자!</div>
+                </a>
             
         </li>
     </ul>
@@ -541,7 +585,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UI-Library를-만들자-1-rollup-js"><span class="toc-number">1.</span> <span class="toc-text">UI Library를 만들자 (1) - rollup.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rollup이란"><span class="toc-number">1.1.</span> <span class="toc-text">rollup이란?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rollup-설정하기-rollup-config-js"><span class="toc-number">1.2.</span> <span class="toc-text">rollup 설정하기 - rollup.config.js</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
